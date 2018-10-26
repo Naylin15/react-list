@@ -12,13 +12,21 @@ class App extends Component {
   }
 
   addProduct = () => {
-    let newProduct = <Product />
     this.setState({
       products: [
-        ...this.state.products, newProduct
+        ...this.state.products, { name: "", quantity: 0, price: 0 }
       ],
     })
     console.log(this.state.products); 
+  }
+
+  changeProduct = (id, newValue) => {
+    const newtProducts = [...this.state.products]
+    newtProducts[id] = {...newtProducts[id], ...newValue}
+
+    this.setState({
+      products: newtProducts,
+    })
   }
 
   render() {
@@ -30,11 +38,18 @@ class App extends Component {
             onClick={this.addProduct}>
               +
           </button>
-          <>
-          {this.state.products}
-          </>
-          {/* <Product/>
-          <Table /> */}
+          {
+            this.state.products.map((product, index) => (
+              <Product
+                key={`product-${index}`}
+                id={index}
+                name={product.name}
+                quantity={product.quantity}
+                price={product.price}
+                changeProduct={this.changeProduct}
+              />
+            ))
+          }
         </header>
       </div>
     );
