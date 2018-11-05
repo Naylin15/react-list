@@ -7,7 +7,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    products: [],
+    products: [
+      { name: "", quantity: 0, price: 0 }
+    ],
     }
   }
 
@@ -31,14 +33,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <button 
+        <div className="main">
+        <button 
             type="button" 
             onClick={this.addProduct}>
               +
-          </button>
-          {
+        </button>
+        {
             this.state.products.map((product, index) => (
               <Product
                 key={`product-${index}`}
@@ -50,8 +51,7 @@ class App extends Component {
               />
             ))
           }
-        </header>
-      </div>
+        </div>
     );
   }
 }
