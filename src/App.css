@@ -28,6 +28,15 @@ button {
   margin: 25px 0px 0px 15px;
 }
 
-.App-link {
-  color: #61dafb;
+#save {
+  margin: 25px 0px 0px 15px;
+}
+
+.table {
+  justify-content: center;
+}
+
+.delete {
+  color: red;
+  font-weight: bold;
 }

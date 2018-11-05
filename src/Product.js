@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class Product extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       products: [
         {
@@ -12,36 +11,35 @@ class Product extends Component {
           price: 0
         }
       ],
+    // name: props.name,
+    // quantity: props.quantity,
+    // price: props.price
     }
   }
 
   changeField = (e) => {
     const { value, name } = e.target;
-
     this.setState({
       [name]: value
     })
     
   }
 
+  clickSubmit = (e) => {
+    e.preventDefault();
+    this.props.addNewProduct(this.state)
+  }
+
   render() {
     return (
       <div className="product">
-      <form className="product">
+      <form className="product" onSubmit={this.clickSubmit}>
       <label>
           Product:
           <input 
             type="text" 
-            name="nameProduct" 
-            // value={this.props.name}
-            onChange={this.changeField
-            //   (e) => {this.props.changeProduct(
-            //   this.props.id,
-            //   {
-            //     name: e.target.value
-            //   }
-            // )}
-            }
+            name="name"
+            onChange={this.changeField}
           />
       </label>
       <br/>
@@ -50,16 +48,7 @@ class Product extends Component {
           <input 
             type="text" 
             name="quantity"
-            // value={this.props.quantity}
-            onChange={this.changeField
-              
-            //   (e) => {this.props.changeProduct(
-            //   this.props.id,
-            //   {
-            //     quantity: e.target.value
-            //   }
-            // )}
-            }
+            onChange={this.changeField}
           />
       </label>
       <br/>
@@ -68,22 +57,19 @@ class Product extends Component {
           <input 
             type="text" 
             name="price" 
-            // value={this.props.price}
-            onChange={this.changeField
-            //   (e) => {this.props.changeProduct(
-            //   this.props.id,
-            //   {
-            //     price: e.target.value
-            //   }
-            // )}
-            }
+            onChange={this.changeField}
           />
       </label>
-      <input type="submit" value="+" />
+      <input 
+        id="save"
+        type="submit"
+        value="Save"
+      />
       </form>
       </div>
     );
   }
 }
+
 
 export default Product;

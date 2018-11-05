@@ -11,55 +11,22 @@ class App extends Component {
     }
   }
 
-  addProduct = () => {
+  addProduct = (newP) => {
 
     this.setState({
       products: [
-        ...this.state.products, { name: "", quantity: 0, price: 0 }
+        ...this.state.products, newP
       ],
     })
     console.log(this.state.products); 
   }
 
-  changeProduct = (id, newValue) => {
-    const newtProducts = [...this.state.products]
-    newtProducts[id] = {...newtProducts[id], ...newValue}
-
-    this.setState({
-      products: newtProducts,
-    })
-  }
-
   render() {
     return (
         <div className="main">
-        <Product/>
-        {/* <Product
-              // key={`product-${index}`}
-              // id={index}
-              name={this.state.products.name}
-              quantity={this.state.products.quantity}
-              price={this.state.products.price}
-              changeProduct={this.changeProduct}
-            /> */}
-        <button 
-            type="button" 
-            onClick={this.addProduct}>
-              +
-        </button>
-        
-        {/* {
-          this.state.products.map((product, index) => (
-            <Product
-              key={`product-${index}`}
-              id={index}
-              name={product.name}
-              quantity={product.quantity}
-              price={product.price}
-              changeProduct={this.changeProduct}
-            />
-          ))
-        } */}
+        <Product
+          addNewProduct = {this.addProduct}
+        />
         {
           this.state.products.map((product, index) => (
             <Table
