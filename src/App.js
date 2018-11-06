@@ -21,10 +21,31 @@ class App extends Component {
     console.log(this.state.products); 
   }
 
+  deleteProduct = (id) => {
+    const delProduct = [...this.state.products]
+    console.log(id)
+    delProduct.splice(id, 1)
+
+    this.setState({
+      products: delProduct,
+    })
+  }
+
+  editProduct = (id) => {
+    const eProduct = [ ...this.state.products ];
+    console.log(eProduct[id])
+
+    // eProduct[id] = [ ...eProduct[id], newValue ];
+    // this.setState({
+    //   products: eProduct,
+    // })
+  }
+
   render() {
     return (
         <div className="main">
         <Product
+          name={this.state.products.name}
           addNewProduct = {this.addProduct}
         />
         {
@@ -35,6 +56,8 @@ class App extends Component {
               name={product.name}
               quantity={product.quantity}
               price={product.price}
+              deleteProduct={this.deleteProduct}
+              editProduct={this.editProduct}
             />
           ))
         }

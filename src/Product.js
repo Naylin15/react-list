@@ -6,14 +6,14 @@ class Product extends Component {
     this.state = {
       products: [
         {
-          name: '',
-          quantity: 0,
-          price: 0
+          name: props.name,
+          quantity: props.quantity,
+          price: props.price
+          // name: '',
+          // quantity: 0,
+          // price: 0
         }
       ],
-    // name: props.name,
-    // quantity: props.quantity,
-    // price: props.price
     }
   }
 
@@ -39,6 +39,7 @@ class Product extends Component {
           <input 
             type="text" 
             name="name"
+            value={this.props.name}
             onChange={this.changeField}
           />
       </label>
@@ -48,6 +49,7 @@ class Product extends Component {
           <input 
             type="text" 
             name="quantity"
+            value={this.props.quantity}
             onChange={this.changeField}
           />
       </label>
@@ -56,7 +58,8 @@ class Product extends Component {
           Price:
           <input 
             type="text" 
-            name="price" 
+            name="price"
+            value={this.props.price}
             onChange={this.changeField}
           />
       </label>
@@ -70,6 +73,5 @@ class Product extends Component {
     );
   }
 }
-
 
 export default Product;
