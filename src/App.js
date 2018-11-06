@@ -45,7 +45,6 @@ class App extends Component {
     return (
         <div className="main">
         <Product
-          name={this.state.products.name}
           addNewProduct = {this.addProduct}
         />
         {
