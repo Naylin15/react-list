@@ -9,10 +9,16 @@ class Table extends Component {
         <label>{this.props.price}</label>
         <button 
           className="edit" 
-          onClick={() => this.props.editProduct(
-              this.props.id,
-            )}>E</button>
-        <button className="delete" onClick={() => this.props.deleteProduct(this.props.id)}>X</button>
+          onClick={() => this.props.editProduct(this.props.id)}
+        >
+          E
+        </button>
+        <button 
+          className="delete" 
+          onClick={() => this.props.deleteProduct(this.props.id)}
+        > 
+          X
+        </button>
       </div>
     );
   }

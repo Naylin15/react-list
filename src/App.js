@@ -7,23 +7,18 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    products: [],
+      products: [],
+      selectProduct: {
+        id: null,
+        name: '',
+        quantity: '',
+        price: '',
+      },
     }
-  }
-
-  addProduct = (newP) => {
-
-    this.setState({
-      products: [
-        ...this.state.products, newP
-      ],
-    })
-    console.log(this.state.products); 
   }
 
   deleteProduct = (id) => {
     const delProduct = [...this.state.products]
-    console.log(id)
     delProduct.splice(id, 1)
 
     this.setState({
@@ -32,20 +27,41 @@ class App extends Component {
   }
 
   editProduct = (id) => {
-    const eProduct = [ ...this.state.products ];
-    console.log(eProduct[id])
+    this.setState({
+      selectProduct: { ...this.state.products[id], id},
+    })
+  }
 
-    // eProduct[id] = [ ...eProduct[id], newValue ];
-    // this.setState({
-    //   products: eProduct,
-    // })
+  handleProduct = (product, id) => {
+    let products = [...this.state.products]
+
+    if (id || id === 0) {
+      products[id] = product
+    } else {
+      products = [...products, {
+        name: product.name,
+        quantity: Number(product.quantity),
+        price: Number(product.price),
+      }] 
+    }
+
+    this.setState({ 
+      products,
+      selectProduct: {
+        id: null,
+        name: '',
+        quantity: '',
+        price: '',
+      }
+    })
   }
 
   render() {
     return (
         <div className="main">
         <Product
-          addNewProduct = {this.addProduct}
+          selectProduct = {this.state.selectProduct}
+          handleProduct = {this.handleProduct}
         />
         {
           this.state.products.map((product, index) => (
