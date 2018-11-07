@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { GoPencil } from 'react-icons/go';
+import {GoTrashcan} from 'react-icons/go';
 
 class Table extends Component {
   render() {
@@ -11,13 +13,13 @@ class Table extends Component {
           className="edit" 
           onClick={() => this.props.editProduct(this.props.id)}
         >
-          E
+          <GoPencil />
         </button>
         <button 
           className="delete" 
           onClick={() => this.props.deleteProduct(this.props.id)}
         > 
-          X
+          <GoTrashcan />
         </button>
       </div>
     );
