@@ -42,48 +42,52 @@ class Product extends Component {
 
   render() {
     return (
-      <div className="product">
-        <form className="product" onSubmit={this.clickSubmit}>
-          <label>
-            Product:
-            <input 
-              type="text" 
-              name="name"
-              value={this.state.name}
-              onChange={this.changeField}
-              required
+        <div className="product">
+          <form className="form-group" onSubmit={this.clickSubmit}>
+            <label className="form-label">
+              Product:
+            </label>
+            <input
+                className="form-input"
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.changeField}
+                required
+              />
+            <br/>
+            <label className="form-label">  
+              Quantity:
+              <input 
+                className="form-input"
+                type="number" 
+                name="quantity"
+                value={this.state.quantity}
+                onChange={this.changeField}
+                required
+              />
+            </label>
+            <br/>
+            <label className="form-label">
+              Price:
+              <input
+                className="form-input"
+                type="number" 
+                name="price"
+                value={this.state.price}
+                onChange={this.changeField}
+                required
+              />
+            </label>
+            <br/>
+            <input
+              className="form-input"
+              id="save"
+              type="submit"
+              value="Save"
             />
-          </label>
-          <br/>
-          <label>  
-            Quantity:
-            <input 
-              type="number" 
-              name="quantity"
-              value={this.state.quantity}
-              onChange={this.changeField}
-              required
-            />
-          </label>
-          <br/>
-          <label>
-            Price:
-            <input 
-              type="number" 
-              name="price"
-              value={this.state.price}
-              onChange={this.changeField}
-              required
-            />
-          </label>
-
-          <input 
-            id="save"
-            type="submit"
-            value="Save"
-          />
-        </form>
-      </div>
+          </form>
+        </div>
     );
   }
 }
